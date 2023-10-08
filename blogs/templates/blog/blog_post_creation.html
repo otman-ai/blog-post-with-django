@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Create Blog Post</h2>
+
+<div class="form-div">
+    <form method="post" class="form-floating">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ form.title.label_tag }}
+            <input type="text" class="form-control" id="{{ form.title.id_for_label }}" placeholder="Enter your title here" name="{{ form.title.name }}">
+        </div>
+        <div class="mb-3">
+            {{ form.content.label_tag }}
+            <textarea class="form-control" placeholder="Your content here" id="{{ form.content.id_for_label }}" name="{{ form.content.name }}"></textarea>
+        </div>
+        <div class="buttons-create-post">
+
+            <button type="submit" class="btn btn-dark">Publish</button>
+            <div> 
+                <a href="{% url 'index' %}" class="link-offset-2 link-underline link-underline-opacity-0">Discard</a>
+            </div> 
+        </div>
+        
+    </form>
+</div>
+{% endblock%}
